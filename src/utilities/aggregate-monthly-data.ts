@@ -3,12 +3,12 @@ import { parseDate } from "./parse-date";
 
 export function aggregateMonthlyData(
   companyData: GroupedCompanyData,
-  targetYear: number
+  targetYear?: number
 ) {
   return Object.entries(companyData).reduce<Partial<Record<string, number>>>(
     (acc, [companyName, datapoints]) => {
       const yearDatapoints = datapoints?.filter(
-        (x) => parseDate(x.timestamp).year === targetYear
+        (x) => targetYear == null || parseDate(x.timestamp).year === targetYear
       );
 
       acc[companyName] = yearDatapoints?.reduce(

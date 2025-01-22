@@ -19,5 +19,8 @@ export async function getMonthlyData() {
   const result = await response.json();
   const monthlyData = monthlyDataResponseSchema.parse(result);
 
-  return Object.groupBy(monthlyData, (current) => current.company);
+  return {
+    grouped: Object.groupBy(monthlyData, (current) => current.company),
+    raw: monthlyData,
+  };
 }
