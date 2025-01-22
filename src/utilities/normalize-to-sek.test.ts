@@ -67,8 +67,19 @@ describe("Normalize tests", () => {
       DEFAULT_EXCHANGE_RATE,
       "SEK"
     );
-
     expect(result).toBeNull();
+
+    const result2 = normalizeAndValidate(
+      {
+        company: "test company",
+        currency: "SEK",
+        timestamp: "2015-04-051",
+        value: 1,
+      },
+      DEFAULT_EXCHANGE_RATE,
+      "SEK"
+    );
+    expect(result2).toBeNull();
   });
 
   it("Deletes negative values", () => {

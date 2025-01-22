@@ -42,7 +42,8 @@ export function normalizeAndValidate(
   }
 
   // Check that date is correct
-  if (!/\d{2}-\d{2}-\d{2}/g.test(datapoint.timestamp)) {
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/g;
+  if (!dateRegex.test(datapoint.timestamp)) {
     // Invalid date
     return null;
   }
