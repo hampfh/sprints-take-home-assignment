@@ -1,7 +1,44 @@
-import { Elysia } from "elysia";
+import chalk from "chalk";
+import { postAnnualData } from "./routes/annual-data";
+import { getExchangeRate } from "./routes/exhange-rate";
+import { getMonthlyData } from "./routes/monthly-data";
+import { aggregateMonthlyData } from "./utilities/aggregate-monthly-data";
+import { normalizeAndValidateDatapoints } from "./utilities/normalize-to-sek";
+import { args } from "./utilities/parse-cli-args";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const { company, year } = args();
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+async function main() {
+  const companyData = await getMonthlyData();
+  const exchangeRate = await getExchangeRate({
+    fromCurrency: "EUR",
+    toCurrency: "SEK",
+    rate: 100,
+  });
+
+  const normalizedCompanyData = normalizeAndValidateDatapoints(
+    companyData,
+    exchangeRate
+  );
+
+  const annualData = aggregateMonthlyData(normalizedCompanyData, year);
+  const annualCompanyData = annualData[company];
+
+  if (annualCompanyData == null) {
+    console.log(chalk.red(`Could not find the company ${company}`));
+    process.exit(1);
+  }
+
+  await postAnnualData({
+    company,
+    currency: "SEK",
+    year,
+    value: annualCompanyData,
+  });
+
+  console.log(`### Annual data [${year}] ###`);
+  console.log(chalk.green(JSON.stringify(annualData, null, 2)));
+
+  process.exit(0);
+}
+main();

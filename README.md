@@ -1,15 +1,31 @@
-# Elysia with Bun runtime
+# Technical solution (part 1)
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
+I'm using elysia api client for this project using bun.
+
+## 🛠️ Installation
+
+The project requires the javascript runner [Bun.sh](http://bun.sh).
+
+When bun is installed, install all dependencies of the project by running:
+
 ```bash
-bun create elysia ./elysia-example
+bun install
 ```
 
-## Development
-To start the development server run:
+## 🚗 Running
+
+Run the project with the following command where it will aggregate all data for the specified year and company:
+
 ```bash
-bun run dev
+bun run start --year 2022 --company "Solvex Solutions"
 ```
 
-Open http://localhost:3000/ with your browser to see the result.
+Note that even though `--company` is specified all known companies will be aggregated in the console, however only the specified company will be posted to the api endpoint.
+
+### Running tests
+
+To run the test suite (which isn't very big) run the following command:
+
+```bash
+bun run test
+```
