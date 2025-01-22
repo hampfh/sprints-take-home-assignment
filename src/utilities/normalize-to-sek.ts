@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
-import { ExchangeRate } from "../routes/exhange-rate";
-import { CompanyDataPoint, GroupedCompanyData } from "../routes/monthly-data";
+import { ExchangeRate } from "../api/exhange-rate";
+import { CompanyDataPoint, GroupedCompanyData } from "../api/monthly-data";
 
 export function normalizeAndValidateDatapoints(
   companyData: GroupedCompanyData,

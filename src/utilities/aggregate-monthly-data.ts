@@ -1,4 +1,4 @@
-import { GroupedCompanyData } from "../routes/monthly-data";
+import { GroupedCompanyData } from "../api/monthly-data";
 import { parseDate } from "./parse-date";
 
 export function aggregateMonthlyData(

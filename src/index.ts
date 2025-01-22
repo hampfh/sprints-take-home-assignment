@@ -1,7 +1,7 @@
 import chalk from "chalk";
-import { postAnnualData } from "./routes/annual-data";
-import { getExchangeRate } from "./routes/exhange-rate";
-import { getMonthlyData } from "./routes/monthly-data";
+import { postAnnualData } from "./api/annual-data";
+import { getExchangeRate } from "./api/exhange-rate";
+import { getMonthlyData } from "./api/monthly-data";
 import { aggregateMonthlyData } from "./utilities/aggregate-monthly-data";
 import { normalizeAndValidateDatapoints } from "./utilities/normalize-to-sek";
 import { args } from "./utilities/parse-cli-args";
