@@ -22,6 +22,10 @@ bun run start --year 2022 --company "Solvex Solutions"
 
 Note that even though `--company` is specified all known companies will be aggregated in the console, however only the specified company will be posted to the api endpoint.
 
+## Results
+
+All results from the query (except the api post request itself of course) will end up in the `results` folder.
+
 ### Running tests
 
 To run the test suite (which isn't very big) run the following command:
