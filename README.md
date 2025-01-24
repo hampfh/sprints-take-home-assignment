@@ -1,6 +1,7 @@
 # Technical solution (part 1)
 
-I'm using elysia api client for this project using bun.
+I'm using bun for this project to run, aggregate and send data. The api in use is:
+[Sprints - technical case sample api](https://technical-case-platform-engineer.onrender.com/docs)
 
 ## 🛠️ Installation
 
