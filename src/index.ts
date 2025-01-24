@@ -76,6 +76,15 @@ async function main() {
     )
   );
 
+  console.log();
+  console.log(
+    chalk.green(
+      "Note: For month-by-month data, see the",
+      chalk.bold("results"),
+      "folder"
+    )
+  );
+
   process.exit(0);
 }
 main();
